@@ -34,10 +34,10 @@ class App extends React.Component {
     // axios get request to retrive specific type pokemons
     axios.get(`/pokemonlist/type/${this.state.type}`)
       .then((response) => {
-        console.log(response);
-        // this.setState({
-        //   pokemonlist: response.
-        // })
+        console.log(response.data);
+        this.setState({
+          pokemonlist: response.data
+        })
       })
       .catch((err) => {
         console.error(err);
