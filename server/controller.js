@@ -39,6 +39,16 @@ const controller = {
         .catch((err) => {
           res.status(400).send(err);
         })
+    },
+    addPokemon: function(req, res) {
+      //return console.log(req.body);
+      Pokemon.create({
+        name : req.body.name,
+        type : req.body.type,
+        img : req.body.img
+      })
+        .then(() => res.status(201).send("Success add pokemon"))
+        .catch((err) => res.status(400).send(err))
     }
   }
 };
