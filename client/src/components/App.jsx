@@ -31,23 +31,23 @@ class App extends React.Component {
 
   // axios.get('/pokemonlist/type', {params: {type: this.state.type} })
   getType() {
-    //console.log('click', this.state.type);
-    // axios.get('/pokemonlist/type', {params: {type: this.state.type} })
-    //   .then((response) => {
-    //     this.setState({
-    //       pokemonlist: response.data
-    //     })
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   })
+    // axios get request to retrive specific type pokemons
+    axios.get(`/pokemonlist/type/${this.state.type}`)
+      .then((response) => {
+        console.log(response);
+        // this.setState({
+        //   pokemonlist: response.
+        // })
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
   handleTypeSelect(e) {
     this.setState({
       type: e.target.value
-    }),
-    this.getType
+    }, this.getType)
   }
 
   render() {

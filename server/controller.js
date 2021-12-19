@@ -11,13 +11,14 @@ const controller = {
         })
     },
     getType: function(req, res) {
-      Pokemon.find({type: req.query.type})
-        .then((pokemons) => {
-          res.status(200).send(pokemons)
-        })
-        .catch((err) => {
-          res.status(404).send(err);
-        })
+      return console.log(req.params);
+      // Pokemon.find({type: req.params.type})
+      //   .then((pokemons) => {
+      //     res.status(200).send(pokemons)
+      //   })
+      //   .catch((err) => {
+      //     res.status(404).send(err);
+      //   })
     },
     updateName: function(req, res) {
       //return console.log(req.body);
