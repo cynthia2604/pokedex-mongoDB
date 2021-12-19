@@ -8,13 +8,23 @@ class App extends React.Component {
     this.state = {
       pokemonlist: []
     }
+    this.getAllPokemon = this.getAllPokemon.bind(this);
   }
+
   componentDidMount() {
-    getAllPokemon();
+    this.getAllPokemon();
   }
+
   getAllPokemon() {
     axios.get('/pokemonlist/pokemons')
+      .then((response) => {
+        this.setState({
+          pokemonlist: response.data
+        })
+      })
+      .catch((err) => console.error(err));
   }
+
   render() {
     return (
       <div>
@@ -37,7 +47,7 @@ class App extends React.Component {
           <option>Dragon</option>
         </select>
         <button>INSERT</button>
-        <PokemonList />
+        <PokemonList pokemons={this.state.pokemonlist}/>
       </div>
     </div>
     )
