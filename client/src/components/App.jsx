@@ -1,5 +1,6 @@
 import React from 'react';
 import PokemonList from './PokemonList.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,6 +8,12 @@ class App extends React.Component {
     this.state = {
       pokemonlist: []
     }
+  }
+  componentDidMount() {
+    getAllPokemon();
+  }
+  getAllPokemon() {
+    axios.get('/pokemonlist/pokemons')
   }
   render() {
     return (
