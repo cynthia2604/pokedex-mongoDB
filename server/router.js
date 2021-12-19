@@ -6,6 +6,7 @@ router.route('/pokemons')
 
 router.route('/pokemon/:id')
   .put(controller.pokemons.updateName)
+  .delete(controller.pokemons.deletePokemon)
 // router.route('/type')
 //   .get(controller.pokemons.getType)
 // router.get('/type', (req, res) => {

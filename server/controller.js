@@ -28,6 +28,16 @@ const controller = {
         .catch((err) => {
           res.status(404).send(err);
         })
+    },
+    deletePokemon: function(req, res) {
+      //return console.log(req.params);
+      Pokemon.deleteOne({_id: req.params.id})
+        .then(() => {
+          res.status(202).send("success delete pokemon")
+        })
+        .catch((err) => {
+          res.status(400).send(err);
+        })
     }
   }
 };
