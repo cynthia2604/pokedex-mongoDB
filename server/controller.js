@@ -9,6 +9,25 @@ const controller = {
         .catch((err) => {
           res.status(404).send(err);
         })
+    },
+    getType: function(req, res) {
+      Pokemon.find({type: req.query.type})
+        .then((pokemons) => {
+          res.status(200).send(pokemons)
+        })
+        .catch((err) => {
+          res.status(404).send(err);
+        })
+    },
+    updateName: function(req, res) {
+      //return console.log(req.body);
+      Pokemon.findOneAndUpdate({_id: req.body.id}, {name: req.body.name})
+        .then(() => {
+          res.status(201).send("success update name")
+        })
+        .catch((err) => {
+          res.status(404).send(err);
+        })
     }
   }
 };

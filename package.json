@@ -20,6 +20,7 @@
   "homepage": "https://github.com/parkderick/hrla35-review#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongoose": "^6.1.2",
     "react": "^17.0.2",

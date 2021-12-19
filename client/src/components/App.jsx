@@ -6,9 +6,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemonlist: []
+      pokemonlist: [],
+      type: ''
     }
     this.getAllPokemon = this.getAllPokemon.bind(this);
+    this.handleTypeSelect = this.handleTypeSelect.bind(this);
+    this.getType = this.getType.bind(this);
   }
 
   componentDidMount() {
@@ -16,6 +19,7 @@ class App extends React.Component {
   }
 
   getAllPokemon() {
+    //console.log('click');
     axios.get('/pokemonlist/pokemons')
       .then((response) => {
         this.setState({
@@ -25,13 +29,34 @@ class App extends React.Component {
       .catch((err) => console.error(err));
   }
 
+  // axios.get('/pokemonlist/type', {params: {type: this.state.type} })
+  getType() {
+    //console.log('click', this.state.type);
+    // axios.get('/pokemonlist/type', {params: {type: this.state.type} })
+    //   .then((response) => {
+    //     this.setState({
+    //       pokemonlist: response.data
+    //     })
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   })
+  }
+
+  handleTypeSelect(e) {
+    this.setState({
+      type: e.target.value
+    }),
+    this.getType
+  }
+
   render() {
     return (
       <div>
       <div>
         <h1>Pokemon!</h1>
-        <button>Show All</button>
-        <select id="type">
+        <button onClick={this.getAllPokemon}>Show All</button>
+        <select id="type" onChange={this.handleTypeSelect}>
           <option>Sort by Type</option>
           <option>Grass</option>
           <option>Fire</option>
@@ -47,7 +72,7 @@ class App extends React.Component {
           <option>Dragon</option>
         </select>
         <button>INSERT</button>
-        <PokemonList pokemons={this.state.pokemonlist}/>
+        <PokemonList pokemons={this.state.pokemonlist} getAllPokemon={this.getAllPokemon}/>
       </div>
     </div>
     )
